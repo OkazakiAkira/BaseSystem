@@ -1,0 +1,27 @@
+# バージョン(1で固定)
+version: 1
+
+# 出力フォーマットの設定
+formatters:
+  customFormat:
+    format: "%(asctime)s | %(levelname)-8s | %(name)s | %(module)s | %(funcName)s | %(lineno)d | %(message)s"
+
+# ハンドラの設定
+handlers:
+  file:
+    class: logging.FileHandler
+    level: DEBUG  # 必要に応じて変更
+    formatter: customFormat
+    encoding: utf-8
+  console:
+    class: logging.StreamHandler
+    level: DEBUG  # 必要に応じて変更
+    formatter: customFormat
+
+# ルート
+root:
+  level: INFO
+  handlers: [file]
+
+# 指定していない設定はrootの設定を採用
+disable_existing_loggers: False
